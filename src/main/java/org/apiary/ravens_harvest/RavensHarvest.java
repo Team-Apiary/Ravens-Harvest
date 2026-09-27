@@ -10,7 +10,7 @@ import net.neoforged.fml.ModContainer;
 
 @Mod(RavensHarvest.MODID)
 public class RavensHarvest {
-    public static final String MODID = "ravensharvest";
+    public static final String MODID = "ravens_harvest";
     public static final Logger LOGGER = LogUtils.getLogger();
 
     public RavensHarvest(IEventBus modEventBus, ModContainer modContainer) {
