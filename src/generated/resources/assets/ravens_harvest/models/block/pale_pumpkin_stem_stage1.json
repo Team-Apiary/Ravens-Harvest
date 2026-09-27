@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/stem_growth1",
+  "textures": {
+    "stem": "ravens_harvest:block/pale_pumpkin_stem"
+  }
+}

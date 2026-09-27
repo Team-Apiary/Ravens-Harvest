@@ -7,6 +7,7 @@ import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.apiary.ravens_harvest.RavensHarvest;
+import org.apiary.ravens_harvest.block.ModBlocks;
 
 import java.util.function.Supplier;
 
@@ -20,6 +21,11 @@ public class ModCreativeModeTabs {
                     .displayItems((itemDisplayParameters, output) -> {
 
                         output.accept(ModItems.RAVEN_FEATHER);
+
+                        output.accept(ModItems.PALE_PUMPKIN_SEEDS);
+                        output.accept(ModBlocks.PALE_PUMPKIN);
+                        output.accept(ModBlocks.CARVED_PALE_PUMPKIN);
+                        output.accept(ModBlocks.PALE_JACK_O_LANTERN);
 
                     }).build());
 

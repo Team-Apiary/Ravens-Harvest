@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "ravens_harvest:block/attached_pale_pumpkin_stem",
+      "y": 180
+    },
+    "facing=north": {
+      "model": "ravens_harvest:block/attached_pale_pumpkin_stem",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "ravens_harvest:block/attached_pale_pumpkin_stem",
+      "y": 270
+    },
+    "facing=west": {
+      "model": "ravens_harvest:block/attached_pale_pumpkin_stem"
+    }
+  }
+}

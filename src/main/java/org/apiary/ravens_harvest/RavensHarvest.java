@@ -1,7 +1,9 @@
 package org.apiary.ravens_harvest;
 
+import org.apiary.ravens_harvest.block.ModBlocks;
 import org.apiary.ravens_harvest.item.ModCreativeModeTabs;
 import org.apiary.ravens_harvest.item.ModItems;
+import org.apiary.ravens_harvest.util.ModBuiltInLootTables;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -21,5 +23,8 @@ public class RavensHarvest {
         ModCreativeModeTabs.register(modEventBus);
 
         ModItems.register(modEventBus);
+        ModBlocks.register(modEventBus);
+
+        ModBuiltInLootTables.registerLootTables();
     }
 }

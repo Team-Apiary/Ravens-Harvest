@@ -1,5 +1,14 @@
 {
   "itemGroup.ravens_harvest": "Raven's Harvest",
 
-  "item.ravens_harvest.raven_feather": "Raven Feather"
+  "item.ravens_harvest.raven_feather": "Raven Feather",
+
+
+  "item.ravens_harvest.pale_pumpkin_seeds": "Pale Pumpkin Seeds",
+  "item.ravens_harvest.attached_pale_pumpkin_stem": "Attached Pale Pumpkin Stem",
+  "item.ravens_harvest.pale_pumpkin_stem": "Pale Pumpkin Stem",
+
+  "block.ravens_harvest.pale_pumpkin": "Pale Pumpkin",
+  "block.ravens_harvest.pale_carved_pumpkin": "Pale Carved Pumpkin",
+  "block.ravens_harvest.pale_jack_o_lantern": "Pale Jack o'Lantern"
 }

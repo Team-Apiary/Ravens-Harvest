@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "front": "ravens_harvest:block/carved_pale_pumpkin",
+    "side": "ravens_harvest:block/pale_pumpkin_side",
+    "top": "ravens_harvest:block/pale_pumpkin_top"
+  }
+}
