@@ -3,10 +3,27 @@
 
   "item.ravens_harvest.raven_feather": "Raven Feather",
 
-
   "item.ravens_harvest.pale_pumpkin_seeds": "Pale Pumpkin Seeds",
   "item.ravens_harvest.attached_pale_pumpkin_stem": "Attached Pale Pumpkin Stem",
   "item.ravens_harvest.pale_pumpkin_stem": "Pale Pumpkin Stem",
+
+  "item.minecraft.potion.effect.blindness": "Potion of Blindness",
+  "item.minecraft.splash_potion.effect.blindness": "Splash Potion of Blindness",
+  "item.minecraft.lingering_potion.effect.blindness": "Lingering Potion of Blindness",
+  "item.minecraft.tipped_arrow.effect.blindness": "Arrow of Blindness",
+  "item.minecraft.potion.effect.long_blindness": "Potion of Blindness",
+  "item.minecraft.splash_potion.effect.long_blindness": "Splash Potion of Blindness",
+  "item.minecraft.lingering_potion.effect.long_blindness": "Lingering Potion of Blindness",
+  "item.minecraft.tipped_arrow.effect.long_blindness": "Arrow of Blindness",
+
+  "item.minecraft.potion.effect.darkness": "Potion of Darkness",
+  "item.minecraft.splash_potion.effect.darkness": "Splash Potion of Darkness",
+  "item.minecraft.lingering_potion.effect.darkness": "Lingering Potion of Darkness",
+  "item.minecraft.tipped_arrow.effect.darkness": "Arrow of Darkness",
+  "item.minecraft.potion.effect.long_darkness": "Potion of Darkness",
+  "item.minecraft.splash_potion.effect.long_darkness": "Splash Potion of Darkness",
+  "item.minecraft.lingering_potion.effect.long_darkness": "Lingering Potion of Darkness",
+  "item.minecraft.tipped_arrow.effect.long_darkness": "Arrow of Darkness",
 
   "block.ravens_harvest.pale_pumpkin": "Pale Pumpkin",
   "block.ravens_harvest.carved_pale_pumpkin": "Carved Pale Pumpkin",

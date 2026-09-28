@@ -19,6 +19,10 @@ public class ModItemTagProvider extends ItemTagsProvider {
     @Override
     protected void addTags(HolderLookup.Provider registries) {
 
+        tag(Tags.Items.FEATHERS)
+                .add(ModItems.RAVEN_FEATHER.get());
+
+
         tag(Tags.Items.CROPS_PUMPKIN)
                 .add(ModBlocks.PALE_PUMPKIN.asItem());
         tag(Tags.Items.PUMPKINS_NORMAL)
