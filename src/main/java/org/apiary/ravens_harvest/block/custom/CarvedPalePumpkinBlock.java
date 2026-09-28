@@ -66,6 +66,8 @@ public class CarvedPalePumpkinBlock extends HorizontalDirectionalBlock {
     }
 
     private void trySpawnGolem(Level level, BlockPos topPos) {
+        //Disabled Snow Golem spawning as it converts Pale Pumpkin into a normal Pumpkin
+        /*
         BlockPattern.BlockPatternMatch snowGolemMatch = this.getOrCreateSnowGolemFull().find(level, topPos);
         if (snowGolemMatch != null) {
             SnowGolem snowGolem = EntityType.SNOW_GOLEM.create(level, EntitySpawnReason.TRIGGERED);
@@ -74,6 +76,7 @@ public class CarvedPalePumpkinBlock extends HorizontalDirectionalBlock {
                 return;
             }
         }
+         */
 
         BlockPattern.BlockPatternMatch ironGolemMatch = this.getOrCreateIronGolemFull().find(level, topPos);
         if (ironGolemMatch != null) {
