@@ -1,7 +1,11 @@
 package org.apiary.ravens_harvest.block;
 
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.resources.Identifier;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.equipment.Equippable;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
@@ -48,7 +52,7 @@ public class ModBlocks {
                     .sound(SoundType.WOOD)
                     .pushReaction(PushReaction.DESTROY)));
 
-    public static final DeferredBlock<CarvedPalePumpkinBlock> CARVED_PALE_PUMPKIN = registerBlock("carved_pale_pumpkin",
+    public static final DeferredBlock<CarvedPalePumpkinBlock> CARVED_PALE_PUMPKIN = registerCarvedPumpkinBlock("carved_pale_pumpkin",
             properties -> new CarvedPalePumpkinBlock(properties
                     .mapColor(MapColor.COLOR_LIGHT_GRAY)
                     .strength(1.0F)
@@ -76,6 +80,17 @@ public class ModBlocks {
 
     private static <T extends Block> void registerBlockItem(String name, DeferredBlock<T> block) {
         ModItems.ITEMS.registerItem(name, properties -> new BlockItem(block.get(), properties.useBlockDescriptionPrefix()));
+    }
+
+    private static <T extends Block> DeferredBlock<T> registerCarvedPumpkinBlock(String name, Function<BlockBehaviour.Properties, T> function) {
+        DeferredBlock<T> toReturn = BLOCKS.registerBlock(name, function);
+        registerCarvedPumpkinBlockItem(name, toReturn);
+        return toReturn;
+    }
+
+    private static <T extends Block> void registerCarvedPumpkinBlockItem(String name, DeferredBlock<T> block) {
+        ModItems.ITEMS.registerItem(name, properties -> new BlockItem(block.get(), properties.useBlockDescriptionPrefix()
+                .component(DataComponents.EQUIPPABLE, Equippable.builder(EquipmentSlot.HEAD).setSwappable(false).setCameraOverlay(Identifier.withDefaultNamespace("misc/pumpkinblur")).build())));
     }
 
     public static void register(IEventBus eventBus) {

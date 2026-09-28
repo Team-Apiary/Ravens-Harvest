@@ -22,8 +22,8 @@ public class RavensHarvest {
 
         ModCreativeModeTabs.register(modEventBus);
 
-        ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
+        ModItems.register(modEventBus);
 
         ModBuiltInLootTables.registerLootTables();
     }

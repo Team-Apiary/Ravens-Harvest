@@ -1,8 +1,12 @@
 package org.apiary.ravens_harvest.item;
 
+import net.minecraft.core.Registry;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.references.ItemIds;
 import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -17,7 +21,9 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import org.apiary.ravens_harvest.RavensHarvest;
 import org.apiary.ravens_harvest.block.ModBlocks;
 
+import java.util.function.BiFunction;
 import java.util.function.Function;
+import java.util.function.UnaryOperator;
 
 public class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(RavensHarvest.MODID);
