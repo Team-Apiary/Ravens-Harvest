@@ -20,6 +20,7 @@ public class ModCreativeModeTabs {
                     .title(Component.translatable("itemGroup.ravens_harvest"))
                     .displayItems((itemDisplayParameters, output) -> {
 
+                        output.accept(ModItems.RAVEN_SPAWN_EGG);
                         output.accept(ModItems.RAVEN_FEATHER);
 
                         output.accept(ModItems.PALE_PUMPKIN_SEEDS);

@@ -1,6 +1,7 @@
 package org.apiary.ravens_harvest;
 
 import org.apiary.ravens_harvest.block.ModBlocks;
+import org.apiary.ravens_harvest.entity.ModEntities;
 import org.apiary.ravens_harvest.item.ModCreativeModeTabs;
 import org.apiary.ravens_harvest.item.ModItems;
 import org.apiary.ravens_harvest.potions.ModPotions;
@@ -25,8 +26,8 @@ public class RavensHarvest {
 
         ModBlocks.register(modEventBus);
         ModItems.register(modEventBus);
-
         ModPotions.register(modEventBus);
+        ModEntities.register(modEventBus);
 
         ModBuiltInLootTables.registerLootTables();
     }

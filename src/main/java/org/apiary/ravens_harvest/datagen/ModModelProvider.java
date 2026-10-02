@@ -27,6 +27,7 @@ public class ModModelProvider extends ModelProvider {
     protected void registerModels(BlockModelGenerators blockModels, ItemModelGenerators itemModels) {
 
         itemModels.generateFlatItem(ModItems.RAVEN_FEATHER.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.RAVEN_SPAWN_EGG.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.PALE_PUMPKIN_SEEDS.get(), ModelTemplates.FLAT_ITEM);
 
         this.createPumpkins(blockModels, ModBlocks.PALE_PUMPKIN.get(), ModBlocks.CARVED_PALE_PUMPKIN.get(), ModBlocks.PALE_JACK_O_LANTERN.get());
