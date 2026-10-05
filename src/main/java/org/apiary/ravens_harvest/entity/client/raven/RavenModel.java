@@ -1,18 +1,13 @@
-package org.apiary.ravens_harvest.entity.client;
+package org.apiary.ravens_harvest.entity.client.raven;
 
 import net.minecraft.client.animation.KeyframeAnimation;
-import net.minecraft.client.animation.definitions.BatAnimation;
 import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.animal.parrot.ParrotModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
-import net.minecraft.client.renderer.entity.state.BatRenderState;
 import net.minecraft.util.Mth;
-import net.minecraft.world.entity.animal.parrot.Parrot;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
-import org.apiary.ravens_harvest.RavensHarvest;
 import org.apiary.ravens_harvest.entity.custom.RavenEntity;
 
 public class RavenModel extends EntityModel<RavenRenderState> {
@@ -28,6 +23,7 @@ public class RavenModel extends EntityModel<RavenRenderState> {
 
     public RavenModel(ModelPart root) {
         super(root);
+
         this.base = root.getChild("base");
         this.body = this.base.getChild("body");
         this.head = this.base.getChild("head");
@@ -36,6 +32,7 @@ public class RavenModel extends EntityModel<RavenRenderState> {
         this.right_leg = this.legs.getChild("right_leg");
         this.left_wing = this.base.getChild("left_wing");
         this.right_wing = this.base.getChild("right_wing");
+
         this.flyingAnimation = RavenAnimation.FLYING.bake(root);
     }
 
@@ -71,33 +68,30 @@ public class RavenModel extends EntityModel<RavenRenderState> {
         return LayerDefinition.create(meshdefinition, 32, 32);
     }
 
+    @Override
     public void setupAnim(RavenRenderState state) {
-        super.setupAnim(state);
-        this.prepare(state.pose);
-        switch (state.pose) {
-            case FLYING:
-                RavensHarvest.LOGGER.info("Flying");
-                this.flyingAnimation.apply(state.flyAnimationState, state.ageInTicks);
-            case STANDING:
-                this.left_leg.xRot = this.left_leg.xRot + Mth.cos(state.walkAnimationPos * 0.6662F) * 1.4F * state.walkAnimationSpeed;
-                this.right_leg.xRot = this.right_leg.xRot + Mth.cos(state.walkAnimationPos * 0.6662F + (float) Math.PI) * 1.4F * state.walkAnimationSpeed;
-            default:
-                break;
-        }
+        this.root().getAllParts().forEach(ModelPart::resetPose);
+        this.applyHeadRotation(state.yRot, state.xRot);
 
+        this.flyingAnimation.apply(state.flyingAnimationState, state.ageInTicks, 1f);
+
+        /*
+        switch (state.pose) {
+            case STANDING:
+            case FLYING:
+                default:
+                    break;
+        }
+         */
     }
 
-    private void prepare(RavenModel.Pose pose) {
-        switch (pose) {
-            case FLYING:
-                //this.left_leg.xRot += (float) (Math.PI * 2.0 / 9.0);
-                //this.right_leg.xRot += (float) (Math.PI * 2.0 / 9.0);
-                this.base.xRot += (float) (Math.PI / 2.25);
-            case STANDING:
-                this.base.xRot = 0;
-            default:
-                break;
-        }
+
+    private void applyHeadRotation(float headYaw, float headPitch) {
+        headYaw = Mth.clamp(headYaw, -30f, 30f);
+        headPitch = Mth.clamp(headPitch, -25f, 45);
+
+        this.head.yRot = headYaw * ((float)Math.PI / 180f);
+        this.head.xRot = headPitch *  ((float)Math.PI / 180f);
     }
 
     public static RavenModel.Pose getPose(RavenEntity entity) {

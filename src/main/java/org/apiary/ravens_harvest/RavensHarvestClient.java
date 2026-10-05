@@ -1,8 +1,6 @@
 package org.apiary.ravens_harvest;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.EntityRenderers;
-import net.minecraft.network.chat.Component;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
@@ -12,11 +10,10 @@ import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.*;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
-import net.neoforged.neoforge.client.network.ClientPacketDistributor;
 import org.apiary.ravens_harvest.entity.ModEntities;
 import org.apiary.ravens_harvest.entity.client.ModModelLayerLocations;
-import org.apiary.ravens_harvest.entity.client.RavenModel;
-import org.apiary.ravens_harvest.entity.client.RavenRenderer;
+import org.apiary.ravens_harvest.entity.client.raven.RavenModel;
+import org.apiary.ravens_harvest.entity.client.raven.RavenRenderer;
 
 // This class will not load on dedicated servers. Accessing client side code from here is safe.
 @Mod(value = RavensHarvest.MODID, dist = Dist.CLIENT)

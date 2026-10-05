@@ -33,6 +33,8 @@ public class RavenEntity extends Animal implements FlyingAnimal {
 
     public final AnimationState idleAnimationState = new AnimationState();
     private int idleAnimationTimeout = 0;
+    public final AnimationState flyingAnimationState = new AnimationState();
+    private int flyingAnimationTimeout = 0;
     public float flap;
     public float flapSpeed;
     public float oFlapSpeed;
@@ -94,6 +96,13 @@ public class RavenEntity extends Animal implements FlyingAnimal {
             this.idleAnimationState.start(this.tickCount);
         } else {
             --this.idleAnimationTimeout;
+        }
+
+        if(this.flyingAnimationTimeout <= 0) {
+            this.flyingAnimationTimeout = 40;
+            this.flyingAnimationState.start(this.tickCount);
+        } else {
+            --this.flyingAnimationTimeout;
         }
     }
 

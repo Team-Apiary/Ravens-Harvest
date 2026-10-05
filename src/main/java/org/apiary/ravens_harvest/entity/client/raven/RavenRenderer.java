@@ -1,9 +1,10 @@
-package org.apiary.ravens_harvest.entity.client;
+package org.apiary.ravens_harvest.entity.client.raven;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.Identifier;
 import org.apiary.ravens_harvest.RavensHarvest;
+import org.apiary.ravens_harvest.entity.client.ModModelLayerLocations;
 import org.apiary.ravens_harvest.entity.custom.RavenEntity;
 
 public class RavenRenderer extends MobRenderer<RavenEntity, RavenRenderState, RavenModel> {
