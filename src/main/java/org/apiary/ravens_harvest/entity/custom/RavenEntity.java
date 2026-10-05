@@ -25,10 +25,12 @@ import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.pathfinder.PathType;
 import net.minecraft.world.phys.Vec3;
+import org.apiary.ravens_harvest.entity.custom.goal.EatCropGoal;
 import org.jspecify.annotations.Nullable;
 
 public class RavenEntity extends Animal implements FlyingAnimal {
     private EatCropGoal eatCropGoal;
+
     public final AnimationState idleAnimationState = new AnimationState();
     private int idleAnimationTimeout = 0;
     public float flap;

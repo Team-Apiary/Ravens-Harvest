@@ -1,19 +1,18 @@
 package org.apiary.ravens_harvest.entity.client;
 
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.animation.KeyframeAnimation;
+import net.minecraft.client.animation.definitions.BatAnimation;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.animal.parrot.ParrotModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
-import net.minecraft.client.renderer.entity.state.ParrotRenderState;
+import net.minecraft.client.renderer.entity.state.BatRenderState;
 import net.minecraft.util.Mth;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.animal.parrot.Parrot;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
+import org.apiary.ravens_harvest.RavensHarvest;
 import org.apiary.ravens_harvest.entity.custom.RavenEntity;
 
 public class RavenModel extends EntityModel<RavenRenderState> {
@@ -25,6 +24,7 @@ public class RavenModel extends EntityModel<RavenRenderState> {
     private final ModelPart right_leg;
     private final ModelPart left_wing;
     private final ModelPart right_wing;
+    private final KeyframeAnimation flyingAnimation;
 
     public RavenModel(ModelPart root) {
         super(root);
@@ -36,6 +36,7 @@ public class RavenModel extends EntityModel<RavenRenderState> {
         this.right_leg = this.legs.getChild("right_leg");
         this.left_wing = this.base.getChild("left_wing");
         this.right_wing = this.base.getChild("right_wing");
+        this.flyingAnimation = RavenAnimation.FLYING.bake(root);
     }
 
     public static LayerDefinition createBodyLayer() {
@@ -70,52 +71,37 @@ public class RavenModel extends EntityModel<RavenRenderState> {
         return LayerDefinition.create(meshdefinition, 32, 32);
     }
 
-
     public void setupAnim(RavenRenderState state) {
         super.setupAnim(state);
-        this.applyHeadRotation(state.yRot, state.xRot);
         this.prepare(state.pose);
-        this.head.xRot = state.xRot * (float) (Math.PI / 180.0);
-        this.head.yRot = state.yRot * (float) (Math.PI / 180.0);
         switch (state.pose) {
             case FLYING:
+                RavensHarvest.LOGGER.info("Flying");
+                this.flyingAnimation.apply(state.flyAnimationState, state.ageInTicks);
             case STANDING:
                 this.left_leg.xRot = this.left_leg.xRot + Mth.cos(state.walkAnimationPos * 0.6662F) * 1.4F * state.walkAnimationSpeed;
                 this.right_leg.xRot = this.right_leg.xRot + Mth.cos(state.walkAnimationPos * 0.6662F + (float) Math.PI) * 1.4F * state.walkAnimationSpeed;
             default:
-                float bobbingBody = state.flapAngle * 0.3F;
-                this.head.y += bobbingBody;
-                this.base.y += bobbingBody;
-                this.left_wing.zRot = -0.0873F - state.flapAngle;
-                this.left_wing.y += bobbingBody;//LEFT
-                this.right_wing.zRot = 0.0873F + state.flapAngle;
-                this.right_wing.y += bobbingBody;//RIGHT
-                this.left_leg.y += bobbingBody;
-                this.right_leg.y += bobbingBody;
+                break;
         }
-    }
 
-    private void applyHeadRotation(float headYaw, float headPitch) {
-        headYaw = Mth.clamp(headYaw, -30f, 30f);
-        headPitch = Mth.clamp(headPitch, -25f, 45);
-
-        this.head.yRot = headYaw * ((float)Math.PI / 180f);
-        this.head.xRot = headPitch *  ((float)Math.PI / 180f);
     }
 
     private void prepare(RavenModel.Pose pose) {
         switch (pose) {
             case FLYING:
-                this.left_leg.xRot += (float) (Math.PI * 2.0 / 9.0);
-                this.left_leg.xRot += (float) (Math.PI * 2.0 / 9.0);
+                //this.left_leg.xRot += (float) (Math.PI * 2.0 / 9.0);
+                //this.right_leg.xRot += (float) (Math.PI * 2.0 / 9.0);
+                this.base.xRot += (float) (Math.PI / 2.25);
             case STANDING:
+                this.base.xRot = 0;
             default:
                 break;
         }
     }
 
     public static RavenModel.Pose getPose(RavenEntity entity) {
-            return entity.isFlying() ? RavenModel.Pose.FLYING : RavenModel.Pose.STANDING;
+        return entity.isFlying() ? RavenModel.Pose.FLYING : RavenModel.Pose.STANDING;
     }
 
     @OnlyIn(Dist.CLIENT)

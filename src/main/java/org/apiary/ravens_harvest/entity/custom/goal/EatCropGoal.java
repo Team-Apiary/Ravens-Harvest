@@ -1,4 +1,4 @@
-package org.apiary.ravens_harvest.entity.custom;
+package org.apiary.ravens_harvest.entity.custom.goal;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.BlockTags;

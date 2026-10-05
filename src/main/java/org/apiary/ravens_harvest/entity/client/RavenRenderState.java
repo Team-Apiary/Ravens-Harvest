@@ -10,5 +10,8 @@ import net.neoforged.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class RavenRenderState extends LivingEntityRenderState {
     public float flapAngle;
+
+    public final AnimationState flyAnimationState = new AnimationState();
+
     public RavenModel.Pose pose = RavenModel.Pose.FLYING;
 }
