@@ -19,6 +19,7 @@ public class RavenModel extends EntityModel<RavenRenderState> {
     private final ModelPart right_leg;
     private final ModelPart left_wing;
     private final ModelPart right_wing;
+    private final KeyframeAnimation idleAnimation;
     private final KeyframeAnimation flyingAnimation;
 
     public RavenModel(ModelPart root) {
@@ -33,6 +34,7 @@ public class RavenModel extends EntityModel<RavenRenderState> {
         this.left_wing = this.base.getChild("left_wing");
         this.right_wing = this.base.getChild("right_wing");
 
+        this.idleAnimation = RavenAnimation.IDLE.bake(root);
         this.flyingAnimation = RavenAnimation.FLYING.bake(root);
     }
 
@@ -73,16 +75,11 @@ public class RavenModel extends EntityModel<RavenRenderState> {
         this.root().getAllParts().forEach(ModelPart::resetPose);
         this.applyHeadRotation(state.yRot, state.xRot);
 
-        this.flyingAnimation.apply(state.flyingAnimationState, state.ageInTicks, 1f);
-
-        /*
-        switch (state.pose) {
-            case STANDING:
-            case FLYING:
-                default:
-                    break;
+        if (state.isFlying) {
+            this.flyingAnimation.apply(state.flyingAnimationState, state.ageInTicks, 1f);
         }
-         */
+
+        this.idleAnimation.apply(state.idleAnimationState, state.ageInTicks, 1f);
     }
 
 
@@ -92,15 +89,5 @@ public class RavenModel extends EntityModel<RavenRenderState> {
 
         this.head.yRot = headYaw * ((float)Math.PI / 180f);
         this.head.xRot = headPitch *  ((float)Math.PI / 180f);
-    }
-
-    public static RavenModel.Pose getPose(RavenEntity entity) {
-        return entity.isFlying() ? RavenModel.Pose.FLYING : RavenModel.Pose.STANDING;
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public static enum Pose {
-        FLYING,
-        STANDING;
     }
 }

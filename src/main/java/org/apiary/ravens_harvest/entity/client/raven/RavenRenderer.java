@@ -21,4 +21,13 @@ public class RavenRenderer extends MobRenderer<RavenEntity, RavenRenderState, Ra
     public RavenRenderState createRenderState() {
         return new RavenRenderState();
     }
+
+    @Override
+    public void extractRenderState(RavenEntity entity, RavenRenderState state, float partialTicks) {
+        super.extractRenderState(entity, state, partialTicks);
+        state.isFlying = entity.isFlying();
+
+        state.idleAnimationState.copyFrom(entity.idleAnimationState);
+        state.flyingAnimationState.copyFrom(entity.flyingAnimationState);
+    }
 }

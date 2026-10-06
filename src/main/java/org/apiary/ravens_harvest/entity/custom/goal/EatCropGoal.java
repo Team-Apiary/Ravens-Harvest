@@ -68,7 +68,7 @@ public class EatCropGoal extends Goal {
 
                 this.mob.ate();
             } else {
-                BlockPos inside = pos.below(-1);
+                BlockPos inside = pos.below(1);
                 if (this.level.getBlockState(inside).is(BlockTags.CROPS)) {
                     if (net.neoforged.neoforge.event.EventHooks.canEntityGrief(getServerLevel(this.level), this.mob)) {
                         this.level.levelEvent(2001, inside, Block.getId(this.level.getBlockState(pos)));

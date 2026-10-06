@@ -29,4 +29,7 @@ public class RavenAnimation {
                         new Keyframe(0.5F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM)
                 ))
                 .build();
+
+        public static final AnimationDefinition IDLE = AnimationDefinition.Builder.withLength(0.5F).looping()
+                .build();
 }
