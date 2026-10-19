@@ -21,7 +21,7 @@ public class ModEntities {
 
 
     public static final Supplier<EntityType<RavenEntity>> RAVEN = ENTITY_TYPES.register("raven",
-            () -> EntityType.Builder.of(RavenEntity::new, MobCategory.CREATURE).sized(0.5F, 0.9F).build(RAVEN_KEY));
+            () -> EntityType.Builder.of(RavenEntity::new, MobCategory.CREATURE).sized(0.2F, 0.5F).build(RAVEN_KEY));
 
 
     public static void register(IEventBus eventBus) {

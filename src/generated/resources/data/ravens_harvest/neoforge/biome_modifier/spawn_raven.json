@@ -1,0 +1,17 @@
+{
+  "type": "neoforge:add_spawns",
+  "biomes": [
+    "minecraft:forest",
+    "minecraft:flower_forest",
+    "minecraft:dark_forest",
+    "minecraft:birch_forest",
+    "minecraft:old_growth_birch_forest",
+    "minecraft:windswept_forest"
+  ],
+  "spawners": {
+    "type": "ravens_harvest:raven",
+    "maxCount": 4,
+    "minCount": 2,
+    "weight": 15
+  }
+}

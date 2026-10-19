@@ -6,6 +6,7 @@ import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.goal.MoveToBlockGoal;
 import net.minecraft.world.entity.animal.rabbit.Rabbit;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
@@ -16,6 +17,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import org.apiary.ravens_harvest.RavensHarvest;
 import org.apiary.ravens_harvest.entity.custom.RavenEntity;
+import org.apiary.ravens_harvest.item.ModItems;
 
 import java.util.EnumSet;
 import java.util.function.Predicate;
@@ -65,10 +67,14 @@ private final RavenEntity raven;
                 if (cropAge == 0) {
                     level.setBlock(cropsPos, Blocks.AIR.defaultBlockState(), 2);
                     level.destroyBlock(cropsPos, true, this.raven);
+                    ItemStack itemStack = ModItems.RAVEN_FEATHER.toStack();
+                    this.raven.drop(itemStack, true, true);
                 } else {
                     level.setBlock(cropsPos, blockState.setValue(CropBlock.AGE, cropAge - 1), 2);
                     level.gameEvent(GameEvent.BLOCK_CHANGE, cropsPos, GameEvent.Context.of(this.raven));
                     level.levelEvent(2001, cropsPos, Block.getId(blockState));
+                    ItemStack itemStack = ModItems.RAVEN_FEATHER.toStack();
+                    this.raven.drop(itemStack, true, true);
                 }
 
                 this.raven.moreCropTicks = 10;
